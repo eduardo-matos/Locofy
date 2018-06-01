@@ -1,5 +1,7 @@
 # Locofy
 
+[![Build Status](https://travis-ci.org/eduardo-matos/Locofy.svg?branch=master)](https://travis-ci.org/eduardo-matos/Locofy)
+
 Ridiculously simple project to search songs/albums/artists on Spotify.
 
 ## Commands
