@@ -1,0 +1,5 @@
+src/registerServiceWorker.js
+
+src/testSetup.js
+src/*.test.js
+src/**/*.test.js
