@@ -10,10 +10,6 @@ describe('AppProvider', () => {
     provider.setState = jest.fn();
   });
 
-  afterEach(() => {
-    delete global.$;
-  });
-
   it('Loads token from localstorage on startup', () => {
     localStorage.getItem.mockReturnValue('Foobar');
     const prov = new AppProvider();
@@ -40,7 +36,7 @@ describe('AppProvider', () => {
   });
 
   it('Sets to loading results before resolving/rejecting ajax request', () => {
-    global.$.ajax.mockReturnValue(new Promise(() => {}));
+    window.$.ajax.mockReturnValue(new Promise(() => {}));
 
     provider.search();
     expect(provider.setState).toHaveBeenCalledWith({ isLoadingResults: true });
@@ -53,11 +49,11 @@ describe('AppProvider', () => {
       type: 'Bar',
       token: 'Baz',
     };
-    global.$.ajax.mockImplementation(() => Promise.resolve());
+    window.$.ajax.mockImplementation(() => Promise.resolve());
 
     await provider.search();
 
-    expect(global.$.ajax).toHaveBeenCalledWith({
+    expect(window.$.ajax).toHaveBeenCalledWith({
       url: API_SEARCH_URL,
       type: 'GET',
       data: { term: 'Foo', type: 'Bar' },
@@ -67,7 +63,7 @@ describe('AppProvider', () => {
   });
 
   it('Logout if ajax request rejects', async () => {
-    global.$.ajax.mockImplementation(() => Promise.reject());
+    window.$.ajax.mockImplementation(() => Promise.reject());
 
     await provider.search();
 
@@ -79,7 +75,7 @@ describe('AppProvider', () => {
   });
 
   it('Sets results if ajax request resolves', async () => {
-    global.$.ajax.mockImplementation(() => Promise.resolve([{ this: 'is', some: 'data' }]));
+    window.$.ajax.mockImplementation(() => Promise.resolve([{ this: 'is', some: 'data' }]));
 
     await provider.search();
 
