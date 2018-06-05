@@ -27,5 +27,12 @@
     "eslint-plugin-react": "7.8.2",
     "jquery": "2.1.1",
     "react-test-renderer": "16.4.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js}",
+      "!src/registerServiceWorker.js",
+      "!src/index.js"
+    ]
   }
 }
