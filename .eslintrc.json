@@ -11,7 +11,8 @@
     "after": true,
     "afterEach": true,
     "xit": true,
-    "localStorage": true
+    "localStorage": true,
+    "$": true
   },
   "rules": {
     "no-use-before-define": 0,

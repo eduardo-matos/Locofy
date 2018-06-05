@@ -3,7 +3,6 @@
 
 import React from 'react';
 import PropType from 'prop-types';
-import $ from 'jquery';
 import { API_SEARCH_URL } from './config';
 import AppContext from './AppContext';
 
