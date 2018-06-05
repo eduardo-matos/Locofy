@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from 'react-materialize';
 import { Redirect } from 'react-router-dom';
-import qs from 'query-string';
 import { LOGIN_URL } from '../../config';
 import AppContext from '../../AppContext';
 import logo from '../../logo.png';
 import './Login.css';
 
 function Login({ location }) {
-  const querystring = qs.parse(location.search);
+  const querystring = parseQuerystring(location.search);
   const hasError = 'e' in querystring;
   const token = querystring.jwt;
 
@@ -35,5 +34,18 @@ Login.propTypes = {
     search: PropTypes.string.isRequired,
   }).isRequired,
 };
+
+function parseQuerystring(querystring) {
+  const qs = (querystring[0] === '?') ? querystring.slice(1) : querystring;
+  const keyValuePairs = qs.split('&').map(segment => segment.split('='));
+
+  const result = {};
+
+  keyValuePairs.forEach(([key, val]) => {
+    result[key] = (val === undefined) ? true : val;
+  });
+
+  return result;
+}
 
 export default Login;
