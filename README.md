@@ -1,6 +1,6 @@
 # Locofy
 
-[![Build Status](https://travis-ci.org/eduardo-matos/Locofy.svg?branch=master)](https://travis-ci.org/eduardo-matos/Locofy)
+[![Build Status](https://travis-ci.org/eduardo-matos/Locofy.svg?branch=master)](https://travis-ci.org/eduardo-matos/Locofy) [![Coverage Status](https://coveralls.io/repos/github/eduardo-matos/Locofy/badge.svg?branch=master)](https://coveralls.io/github/eduardo-matos/Locofy?branch=master)
 
 Ridiculously simple project to search songs/albums/artists on Spotify.
 
