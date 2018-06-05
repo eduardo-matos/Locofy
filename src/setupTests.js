@@ -1,6 +1,5 @@
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import $ from 'jquery';
 import context from './__mocks__/context';
 
 configure({ adapter: new Adapter() });
@@ -8,8 +7,6 @@ configure({ adapter: new Adapter() });
 jest.mock('./AppContext');
 
 beforeEach(() => {
-  $.ajax = jest.fn();
-
   global.localStorage = {
     setItem: jest.fn(),
     getItem: jest.fn(),

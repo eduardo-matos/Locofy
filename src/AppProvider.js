@@ -38,7 +38,7 @@ export default class AppProvider extends React.Component {
   search() {
     this.setState({ isLoadingResults: true });
 
-    return $.ajax({
+    return global.$.ajax({
       url: API_SEARCH_URL,
       type: 'GET',
       data: { term: this.state.term, type: this.state.type },
