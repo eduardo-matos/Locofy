@@ -30,7 +30,7 @@ describe('SearchBar', () => {
     const sb = mount(<SearchBar />);
     const event = { target: { value: 'broccoli' } };
     // sb.simulate('change') not working...
-    const onChange = sb.find('Input[name="search-term"]').prop('onChange')(event);
+    sb.find('Input[name="search-term"]').prop('onChange')(event);
 
     expect(context.setTerm).toHaveBeenCalledWith('broccoli');
   });
@@ -39,7 +39,7 @@ describe('SearchBar', () => {
     const sb = mount(<SearchBar />);
     const event = { target: { value: 'Foobar' } };
     // sb.simulate('change') not working...
-    const onChange = sb.find('Input[name="search-type"]').prop('onChange')(event);
+    sb.find('Input[name="search-type"]').prop('onChange')(event);
 
     expect(context.setType).toHaveBeenCalledWith('Foobar');
   });
@@ -60,5 +60,4 @@ describe('SearchBar', () => {
     expect(sb.find('Input[name="search-type"]').prop('disabled')).toBeTruthy();
     expect(sb.find('Button').prop('disabled')).toBeTruthy();
   });
-
 });

@@ -1,5 +1,5 @@
-import AppProvider from './AppProvider';
 import $ from 'jquery';
+import AppProvider from './AppProvider';
 import { API_SEARCH_URL } from './config';
 
 describe('AppProvider', () => {
@@ -33,7 +33,12 @@ describe('AppProvider', () => {
   });
 
   it('Sends correct params to API', async () => {
-    provider.state = {...provider.state, term: 'Foo', type: 'Bar', token: 'Baz'};
+    provider.state = {
+      ...provider.state,
+      term: 'Foo',
+      type: 'Bar',
+      token: 'Baz',
+    };
     $.ajax.mockImplementation(() => Promise.resolve());
 
     await provider.search();

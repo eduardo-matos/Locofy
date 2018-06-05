@@ -1,6 +1,5 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import { Redirect } from 'react-router-dom';
+import { mount } from 'enzyme';
 import Login from './';
 import { LOGIN_URL } from '../../config';
 import context from '../../__mocks__/context';

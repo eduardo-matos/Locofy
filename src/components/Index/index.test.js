@@ -5,7 +5,7 @@ import context from '../../__mocks__/context';
 
 describe('Index', () => {
   it('Renders SearchBar and SearchResults', () => {
-    context.state.isLoggedIn = true
+    context.state.isLoggedIn = true;
     const index = mount(<Index match={{ params: {} }} />);
 
     expect(index.find('SearchBar')).toHaveLength(1);

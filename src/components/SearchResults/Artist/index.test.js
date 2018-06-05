@@ -14,8 +14,8 @@ describe('Artist', () => {
   it('Formats result correctly', () => {
     const artist = mount(<Artist {...props} />);
 
-    expect(artist.find('img').prop('src')).toEqual(props.image)
-    expect(artist.find('Card').prop('title')).toEqual(props.name)
+    expect(artist.find('img').prop('src')).toEqual(props.image);
+    expect(artist.find('Card').prop('title')).toEqual(props.name);
     expect(artist.find('Popularity').prop('value')).toEqual(props.popularity);
 
     const actualGenres = artist.find('Chip').map(node => node.text());
