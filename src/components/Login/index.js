@@ -28,7 +28,7 @@ function Login({ match }) {
 Login.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      token: PropTypes.string.isRequired,
+      token: PropTypes.string,
     }),
   }).isRequired,
 };
