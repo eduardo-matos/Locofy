@@ -12,7 +12,6 @@ function App() {
         <div>
           <Route exact path="/" component={Index} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/login/:token" component={Login} />
         </div>
       </Router>
     </AppProvider>

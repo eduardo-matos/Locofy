@@ -10,7 +10,8 @@
     "beforeEach": true,
     "after": true,
     "afterEach": true,
-    "xit": true
+    "xit": true,
+    "localStorage": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }]

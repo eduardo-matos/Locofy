@@ -10,17 +10,21 @@ import AppContext from './AppContext';
 export default class AppProvider extends React.Component {
   constructor(props) {
     super(props);
+
+    const token = localStorage.getItem('token') || '';
+
     this.state = {
       results: [],
       type: 'artist',
       term: '',
-      token: '',
-      isLoggedIn: false,
+      token,
+      isLoggedIn: !!token,
       isLoadingResults: false,
     };
   }
 
   setToken(token) {
+    localStorage.setItem('token', token);
     this.setState({ token, isLoggedIn: true });
   }
 

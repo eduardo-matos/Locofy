@@ -10,6 +10,15 @@ describe('AppProvider', () => {
     provider.setState = jest.fn();
   });
 
+  it('Loads token from localstorage on startup', () => {
+    localStorage.getItem.mockReturnValue('Foobar');
+    const prov = new AppProvider();
+
+    expect(prov.state.token).toEqual('Foobar');
+    expect(prov.state.isLoggedIn).toBeTruthy();
+    expect(localStorage.getItem).toHaveBeenCalledWith('token');
+  });
+
   it('Sets a term', () => {
     provider.setTerm('Spam');
     expect(provider.setState).toHaveBeenCalledWith({ term: 'Spam' });
@@ -23,6 +32,7 @@ describe('AppProvider', () => {
   it('Sets a token', () => {
     provider.setToken('Meat');
     expect(provider.setState).toHaveBeenCalledWith({ token: 'Meat', isLoggedIn: true });
+    expect(localStorage.setItem).toHaveBeenCalledWith('token', 'Meat');
   });
 
   it('Sets to loading results before resolving/rejecting ajax request', () => {

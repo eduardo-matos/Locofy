@@ -10,6 +10,11 @@ jest.mock('./AppContext');
 beforeEach(() => {
   $.ajax = jest.fn();
 
+  global.localStorage = {
+    setItem: jest.fn(),
+    getItem: jest.fn(),
+  };
+
   context.state = {
     results: [],
     type: 'artist',

@@ -6,17 +6,17 @@ import context from '../../__mocks__/context';
 
 describe('Login', () => {
   it('Has link to external login', () => {
-    const login = mount(<Login match={{ params: {} }} />);
+    const login = mount(<Login location={{ search: '' }} />);
     expect(login.find('.login-link').prop('href')).toEqual(LOGIN_URL);
   });
 
   it('Calls setToken if a token is found', () => {
-    mount(<Login match={{ params: { token: 'spam' } }} />);
+    mount(<Login location={{ search: '?jwt=spam' }} />);
     expect(context.setToken).toHaveBeenCalledWith('spam');
   });
 
   it('Doesn\'t call setToken if a token is not found', () => {
-    mount(<Login match={{ params: { token: '' } }} />);
+    mount(<Login location={{ search: '' }} />);
     expect(context.setToken).not.toHaveBeenCalled();
   });
 
