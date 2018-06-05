@@ -8,4 +8,5 @@ script:
   - npm run build
   - npm test -- --coverage
   - npm run lint
+after_script:
   - npm run coverage
