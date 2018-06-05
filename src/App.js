@@ -1,18 +1,21 @@
 import React from 'react';
-import logo from './logo.png';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import AppProvider from './AppProvider';
+import Index from './components/Index';
+import Login from './components/Login';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to Locofy</h1>
-      </header>
-      <p className="App-intro">
-        Soon some interesting content here...
-      </p>
-    </div>
+    <AppProvider>
+      <Router>
+        <div>
+          <Route exact path="/" component={Index} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/login/:token" component={Login} />
+        </div>
+      </Router>
+    </AppProvider>
   );
 }
 

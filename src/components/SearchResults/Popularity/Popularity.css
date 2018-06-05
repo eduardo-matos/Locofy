@@ -1,0 +1,28 @@
+.result-popularity {
+  font-size: 20px;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 3px 10px;
+  margin: 10px 0;
+  text-transform: capitalize;
+}
+
+.result-populrity.hot {
+  color: #c22;
+  background-color: #fdd;
+}
+
+.result-populrity.cool {
+  color: #967300;
+  background-color: #ffdf75;
+}
+
+.result-populrity.regular {
+  color: #035800;
+  background-color: #aaffa7;
+}
+
+.result-populrity.underground {
+  color: #4b4b4b;
+  background-color: #dddddd;
+}

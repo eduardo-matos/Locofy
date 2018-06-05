@@ -10,3 +10,8 @@ Ridiculously simple project to search songs/albums/artists on Spotify.
 * `npm test`: Runs tests.
 * `npm run build`: Builds project to run in production.
 * `npm run lint`: Run linter on source files.
+
+## Environment Variables
+
+* `REACT_APP_API_SEARCH_URL` (`http://localhost:5000/search`): API's search endpoint.
+* `REACT_APP_LOGIN_URL` (`http://localhost:5000/login`): Back-end's login URL.
