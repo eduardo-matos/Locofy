@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardTitle } from 'react-materialize';
+import { DEFAULT_IMAGE } from '../../../config';
 
 function Album({
   image,
@@ -10,7 +11,7 @@ function Album({
 }) {
   return (
     <Card
-      header={<CardTitle image={image} />}
+      header={<CardTitle image={image || DEFAULT_IMAGE} />}
       title={name}
       className="truncate"
     >
@@ -21,10 +22,14 @@ function Album({
 }
 
 Album.propTypes = {
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   name: PropTypes.string.isRequired,
   artists: PropTypes.arrayOf(PropTypes.string).isRequired,
   availability: PropTypes.bool.isRequired,
+};
+
+Album.defaultProps = {
+  image: null,
 };
 
 export default Album;

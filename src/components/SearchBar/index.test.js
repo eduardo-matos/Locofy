@@ -13,15 +13,15 @@ describe('SearchBar', () => {
   });
 
   it('Term field value comes from context.state.term', () => {
-    context.state.term = 'Spam';
     const sb = mount(<SearchBar />);
+    sb.setState({ term: 'Spam' });
 
     expect(sb.find('Input[name="search-term"]').prop('value')).toEqual('Spam');
   });
 
   it('Type field value comes from context.state.type', () => {
-    context.state.type = 'album';
     const sb = mount(<SearchBar />);
+    sb.setState({ type: 'album' });
 
     expect(sb.find('Input[name="search-type"]').prop('value')).toEqual('album');
   });
@@ -32,7 +32,7 @@ describe('SearchBar', () => {
     // sb.simulate('change') not working...
     sb.find('Input[name="search-term"]').prop('onChange')(event);
 
-    expect(context.setTerm).toHaveBeenCalledWith('broccoli');
+    expect(sb.state().term).toEqual('broccoli');
   });
 
   it('Updates type when selectfield gets changed', () => {
@@ -41,14 +41,15 @@ describe('SearchBar', () => {
     // sb.simulate('change') not working...
     sb.find('Input[name="search-type"]').prop('onChange')(event);
 
-    expect(context.setType).toHaveBeenCalledWith('Foobar');
+    expect(sb.state().type).toEqual('Foobar');
   });
 
   it('Calls search if button is clicked', () => {
     const sb = mount(<SearchBar />);
+    sb.setState({ term: 'Yay', type: 'Wow' });
     sb.find('Button').simulate('click');
 
-    expect(context.search).toHaveBeenCalled();
+    expect(context.search).toHaveBeenCalledWith('Yay', 'Wow');
   });
 
   it('Disable fields if context is loading results', () => {
@@ -59,5 +60,27 @@ describe('SearchBar', () => {
     expect(sb.find('Input[name="search-term"]').prop('disabled')).toBeTruthy();
     expect(sb.find('Input[name="search-type"]').prop('disabled')).toBeTruthy();
     expect(sb.find('Button').prop('disabled')).toBeTruthy();
+  });
+
+  it('Sets invalid if submits with blank term', () => {
+    const sb = mount(<SearchBar />);
+    sb.setState({ isValid: true });
+
+    sb.find('Button').simulate('click');
+    expect(sb.state().isValid).toBeFalsy();
+  });
+
+  it('Adds error to term field if state is invalid', () => {
+    const sb = mount(<SearchBar />);
+    sb.setState({ isValid: false });
+
+    expect(sb.find('Input[name="search-term"]').prop('error')).toEqual(' ');
+  });
+
+  it('Removes error from term field if state is invalid', () => {
+    const sb = mount(<SearchBar />);
+    sb.setState({ isValid: true });
+
+    expect(sb.find('Input[name="search-term"]').prop('error')).toEqual('');
   });
 });

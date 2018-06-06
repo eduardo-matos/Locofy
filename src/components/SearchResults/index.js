@@ -20,16 +20,35 @@ function SearchResults() {
         if (!context.state.results.length) return <div className="center">No results</div>;
 
         return (
-          <Row>
-            {context.state.results.map((item) => {
+          <div>
+            {chunckfy(context.state.results, 3).map((items) => {
               const Component = COMPONENT_MAPPING[context.state.type];
-              return <Col s={12} m={4} key={item.id || Math.random()}><Component {...item} /></Col>;
+
+              return (
+                <Row key={Math.random()}>
+                  {
+                    items.map(item => (
+                      <Col s={12} m={4} key={item.id || Math.random()}>
+                        <Component {...item} />
+                      </Col>
+                    ))
+                  }
+                </Row>
+              );
             })}
-          </Row>
+          </div>
         );
       }}
     </AppContext.Consumer>
   );
+}
+
+function chunckfy(array, size) {
+  const result = [];
+  for (let i = 0, j = array.length; i < j; i += size) {
+    result.push(array.slice(i, i + size));
+  }
+  return result;
 }
 
 export default SearchResults;

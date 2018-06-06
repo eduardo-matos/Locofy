@@ -27,21 +27,13 @@ export default class AppProvider extends React.Component {
     this.setState({ token, isLoggedIn: true });
   }
 
-  setTerm(term) {
-    this.setState({ term });
-  }
-
-  setType(type) {
-    this.setState({ type });
-  }
-
-  search() {
-    this.setState({ isLoadingResults: true });
+  search(term, type) {
+    this.setState({ term, type, isLoadingResults: true });
 
     return global.$.ajax({
       url: API_SEARCH_URL,
       method: 'GET',
-      data: { term: this.state.term, type: this.state.type },
+      data: { term, type },
       headers: { Authorization: `Bearer ${this.state.token}` },
       dataType: 'json',
     })
@@ -63,8 +55,6 @@ export default class AppProvider extends React.Component {
         value={{
           state: this.state,
           setToken: this.setToken.bind(this),
-          setTerm: this.setTerm.bind(this),
-          setType: this.setType.bind(this),
           search: this.search.bind(this),
         }}
       >

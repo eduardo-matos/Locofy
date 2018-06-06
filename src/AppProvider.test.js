@@ -19,16 +19,6 @@ describe('AppProvider', () => {
     expect(localStorage.getItem).toHaveBeenCalledWith('token');
   });
 
-  it('Sets a term', () => {
-    provider.setTerm('Spam');
-    expect(provider.setState).toHaveBeenCalledWith({ term: 'Spam' });
-  });
-
-  it('Sets a type', () => {
-    provider.setType('Fish');
-    expect(provider.setState).toHaveBeenCalledWith({ type: 'Fish' });
-  });
-
   it('Sets a token', () => {
     provider.setToken('Meat');
     expect(provider.setState).toHaveBeenCalledWith({ token: 'Meat', isLoggedIn: true });
@@ -45,13 +35,11 @@ describe('AppProvider', () => {
   it('Sends correct params to API', async () => {
     provider.state = {
       ...provider.state,
-      term: 'Foo',
-      type: 'Bar',
       token: 'Baz',
     };
     global.$.ajax.mockImplementation(() => Promise.resolve());
 
-    await provider.search();
+    await provider.search('Foo', 'Bar');
 
     expect(global.$.ajax).toHaveBeenCalledWith({
       url: API_SEARCH_URL,

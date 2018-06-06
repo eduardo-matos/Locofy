@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardTitle, Chip } from 'react-materialize';
 import Popularity from '../Popularity';
+import { DEFAULT_IMAGE } from '../../../config';
 
 function Artist({
   name,
@@ -11,7 +12,7 @@ function Artist({
 }) {
   return (
     <Card
-      header={<CardTitle image={image} />}
+      header={<CardTitle image={image || DEFAULT_IMAGE} />}
       title={name}
       className="truncate result-item"
     >
@@ -23,9 +24,13 @@ function Artist({
 
 Artist.propTypes = {
   name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   popularity: PropTypes.number.isRequired,
+};
+
+Artist.defaultProps = {
+  image: null,
 };
 
 export default Artist;

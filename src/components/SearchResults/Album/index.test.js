@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Album from './';
+import { DEFAULT_IMAGE } from '../../../config';
 
 describe('Album', () => {
   const props = {
@@ -28,5 +29,10 @@ describe('Album', () => {
   it('Shows unavailability', () => {
     const album = mount(<Album {...props} availability={false} />);
     expect(album.find('.album-availability').text()).toEqual('Unavailable');
+  });
+
+  it('Shows placeholder image if there artist result brings no image', () => {
+    const album = mount(<Album {...props} image={null} />);
+    expect(album.find('img').prop('src')).toEqual(DEFAULT_IMAGE);
   });
 });

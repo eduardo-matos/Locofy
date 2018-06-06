@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Artist from './';
+import { DEFAULT_IMAGE } from '../../../config';
 
 describe('Artist', () => {
   const props = {
@@ -20,5 +21,10 @@ describe('Artist', () => {
 
     const actualGenres = artist.find('Chip').map(node => node.text());
     expect(actualGenres).toEqual(props.genres);
+  });
+
+  it('Shows placeholder image if there artist result brings no image', () => {
+    const artist = mount(<Artist {...props} image={null} />);
+    expect(artist.find('img').prop('src')).toEqual(DEFAULT_IMAGE);
   });
 });
