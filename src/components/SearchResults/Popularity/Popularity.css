@@ -7,22 +7,22 @@
   text-transform: capitalize;
 }
 
-.result-populrity.hot {
+.result-popularity.hot {
   color: #c22;
   background-color: #fdd;
 }
 
-.result-populrity.cool {
+.result-popularity.cool {
   color: #967300;
   background-color: #ffdf75;
 }
 
-.result-populrity.regular {
+.result-popularity.regular {
   color: #035800;
   background-color: #aaffa7;
 }
 
-.result-populrity.underground {
+.result-popularity.underground {
   color: #4b4b4b;
   background-color: #dddddd;
 }
