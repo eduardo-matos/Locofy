@@ -42,7 +42,7 @@ function parseQuerystring(querystring) {
   const result = {};
 
   keyValuePairs.forEach(([key, val]) => {
-    result[key] = (val === undefined) ? true : val;
+    result[key] = (val === undefined) ? true : decodeURIComponent(val);
   });
 
   return result;
