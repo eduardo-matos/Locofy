@@ -48,7 +48,12 @@ export default class AppProvider extends React.Component {
       .then((data) => {
         this.setState({ results: data, isLoadingResults: false });
       }, () => {
-        this.setState({ isLoggedIn: false, token: '', isLoadingResults: false });
+        this.setState({
+          isLoggedIn: false,
+          token: '',
+          results: [],
+          isLoadingResults: false,
+        });
       });
   }
 
