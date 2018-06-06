@@ -40,6 +40,7 @@ export default class AppProvider extends React.Component {
       .then((data) => {
         this.setState({ results: data, isLoadingResults: false });
       }, () => {
+        localStorage.removeItem('token');
         this.setState({
           isLoggedIn: false,
           token: '',

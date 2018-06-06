@@ -55,6 +55,7 @@ describe('AppProvider', () => {
 
     await provider.search();
 
+    expect(localStorage.removeItem).toHaveBeenCalledWith('token');
     expect(provider.setState).toHaveBeenCalledWith({
       token: '',
       isLoggedIn: false,
