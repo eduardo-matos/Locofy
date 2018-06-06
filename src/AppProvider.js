@@ -40,7 +40,7 @@ export default class AppProvider extends React.Component {
 
     return global.$.ajax({
       url: API_SEARCH_URL,
-      type: 'GET',
+      method: 'GET',
       data: { term: this.state.term, type: this.state.type },
       headers: { Authorization: `Bearer ${this.state.token}` },
       dataType: 'json',

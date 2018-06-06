@@ -55,7 +55,7 @@ describe('AppProvider', () => {
 
     expect(window.$.ajax).toHaveBeenCalledWith({
       url: API_SEARCH_URL,
-      type: 'GET',
+      method: 'GET',
       data: { term: 'Foo', type: 'Bar' },
       headers: { Authorization: 'Bearer Baz' },
       dataType: 'json',
