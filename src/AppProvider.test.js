@@ -36,7 +36,7 @@ describe('AppProvider', () => {
   });
 
   it('Sets to loading results before resolving/rejecting ajax request', () => {
-    window.$.ajax.mockReturnValue(new Promise(() => {}));
+    global.$.ajax.mockReturnValue(new Promise(() => {}));
 
     provider.search();
     expect(provider.setState).toHaveBeenCalledWith({ isLoadingResults: true });
@@ -49,11 +49,11 @@ describe('AppProvider', () => {
       type: 'Bar',
       token: 'Baz',
     };
-    window.$.ajax.mockImplementation(() => Promise.resolve());
+    global.$.ajax.mockImplementation(() => Promise.resolve());
 
     await provider.search();
 
-    expect(window.$.ajax).toHaveBeenCalledWith({
+    expect(global.$.ajax).toHaveBeenCalledWith({
       url: API_SEARCH_URL,
       method: 'GET',
       data: { term: 'Foo', type: 'Bar' },
@@ -63,7 +63,7 @@ describe('AppProvider', () => {
   });
 
   it('Logout if ajax request rejects', async () => {
-    window.$.ajax.mockImplementation(() => Promise.reject());
+    global.$.ajax.mockImplementation(() => Promise.reject());
 
     await provider.search();
 
@@ -71,11 +71,12 @@ describe('AppProvider', () => {
       token: '',
       isLoggedIn: false,
       isLoadingResults: false,
+      results: [],
     });
   });
 
   it('Sets results if ajax request resolves', async () => {
-    window.$.ajax.mockImplementation(() => Promise.resolve([{ this: 'is', some: 'data' }]));
+    global.$.ajax.mockImplementation(() => Promise.resolve([{ this: 'is', some: 'data' }]));
 
     await provider.search();
 
