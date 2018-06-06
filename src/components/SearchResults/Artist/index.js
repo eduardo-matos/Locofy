@@ -14,7 +14,7 @@ function Artist({
     <Card
       header={<CardTitle image={image || DEFAULT_IMAGE} />}
       title={name}
-      className="truncate result-item"
+      className="truncate"
     >
       <div className="artist-genres">{genres.map(genre => <Chip key={genre}>{genre}</Chip>)}</div>
       <Popularity value={popularity} />

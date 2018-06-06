@@ -20,7 +20,7 @@ function SearchResults() {
         if (!context.state.results.length) return <div className="center">No results</div>;
 
         return (
-          <div>
+          <div className="search-results">
             {chunckfy(context.state.results, 3).map((items) => {
               const Component = COMPONENT_MAPPING[context.state.type];
 
